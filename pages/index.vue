@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div ref="section" class="section">
     <div class="container">
       <!-- <logo /> -->
 
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import randomWords from 'random-words';
 import Logo from "~/components/Logo.vue";
 import vgt from "./datatable";
 
@@ -36,9 +37,11 @@ export default {
     };
   },
   async created() {
-     for(let i = 0; i< 2000; i++) {
+    document.body.style.cursor = 'wait';
+     for(let i = 0; i < 2000; i++) {
         this.data.push({
-          row_1: (Math.random() * parseFloat(Math.random().toString().substr(-5))).toFixed(this.fixed),
+          row_1: randomWords(),
+          // row_1: (Math.random() * parseFloat(Math.random().toString().substr(-5))).toFixed(this.fixed),
           row_2: (Math.random() * parseFloat(Math.random().toString().substr(-5))).toFixed(this.fixed),
           row_3: (Math.random() * parseFloat(Math.random().toString().substr(-5))).toFixed(this.fixed),
           row_4: (Math.random() * parseFloat(Math.random().toString().substr(-5))).toFixed(this.fixed),
@@ -57,6 +60,7 @@ export default {
           }, 1000));
         }
       }
+       document.body.style.cursor = 'default';
   },
   // computed: {
   //   // rows() {
@@ -68,6 +72,10 @@ export default {
 
 <style lang="scss">
 // Vue Good Table
+
+// body {
+//     cursor: wait;
+// }
 
 .vgt-wrap__footer,
 .vgt-global-search__input .vgt-input {

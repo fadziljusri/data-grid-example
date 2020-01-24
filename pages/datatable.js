@@ -2,6 +2,7 @@ const columns = [
   {
     label: "Row 1",
     field: "row_1",
+    // tdClass: 'is-capitalized',
     filterOptions: {
       enabled: true,
       placeholder: "-- All --",
@@ -101,8 +102,8 @@ const sortOptions = {
 };
 
 const searchOptions = {
-  enabled: false,
-  placeholder: "Search this table"
+  enabled: true,
+  placeholder: "Search..."
 };
 
 const pageOptions = {
